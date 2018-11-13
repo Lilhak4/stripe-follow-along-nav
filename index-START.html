@@ -250,6 +250,21 @@
       // If I dont use arrow function, then I cant use this because it is inherited from the encompassing function
       setTimeout(() => this.classList.add('trigger-enter-active'), 150);
       background.classList.add('open');
+
+      const dropdown = this.querySelector('.dropdown');
+      // this variable can receive the exact coords of the dropdown menu by using the bounding function
+      const dropdownCoords = dropdown.getBoundingClientRect();
+      const navCoords = nav.getBoundingClientRect();
+      console.log(dropdownCoords);
+
+      const coords = {
+        height: dropdownCoords.height,
+        width: dropdownCoords.width,
+
+      };
+      // Wont work unless you use template string that specifies pizels to be used
+      background.style.setProperty('width', `${coords.width}px`);
+      background.style.setProperty('height', `${coords.height}px`);
     }
 
     function handleLeave() {
